@@ -12,14 +12,14 @@
 <meta property="og:description" content="Pools should pool rewards, not blocks. Decentralized Alternative Templates and Shares Transmitted by Relays: your node builds the block, a signed share proves the work, the coinbase pays you directly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://datstr.com/">
-<meta property="og:image" content="https://datstr.com/og.png?v=3">
+<meta property="og:image" content="https://datstr.com/og.png?v=4">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="datstr: pools should pool rewards, not blocks">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="datstr">
 <meta name="twitter:description" content="Pools should pool rewards, not blocks. A decentralized mining share network for Bitcoin and its BLAKE2b fork.">
-<meta name="twitter:image" content="https://datstr.com/og.png?v=3">
+<meta name="twitter:image" content="https://datstr.com/og.png?v=4">
 <style>
   :root{--bg:#fff;--fg:#16181d;--mut:#5b6470;--bd:#e6e8eb;--pan:#fafbfc;--ac:#6d28d9;--ac2:#0969da;--good:#1a7f37;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -101,7 +101,7 @@
   <div class="grid3">
     <div><h3>Your template</h3><p>The gateway runs beside your own node and builds every block from its <code>getblocktemplate</code>. Nothing north of the gateway ever sends a template, a transaction list or a merkle branch south. Your node's policy is your policy.</p></div>
     <div><h3>Your receipt</h3><p>A share is the header, the coinbase and the merkle branches, signed by a worker key your <a href="https://did-nostr.com/">did:nostr</a> master delegated. The coordinator's signed ack makes it a receipt. What was acked and not paid is provable.</p></div>
-    <div><h3>Your payout</h3><p>The coordinator only dictates coinbase outputs, like DATUM's coinbaser, from a deterministic difficulty-summed window. Every block pays the window directly. Nobody ever holds the reward.</p></div>
+    <div><h3>Your payout</h3><p>The coordinator only dictates coinbase outputs, from a deterministic difficulty-summed window. Every block pays the window directly. Nobody ever holds the reward.</p></div>
   </div>
 
   <h2 class="shead">Four layers</h2>
@@ -126,9 +126,9 @@
     <tr><td><code>xbt4</code></td><td>Knots BLAKE2b testnet4</td><td>164 bytes</td><td>as above</td></tr>
   </table>
 
-  <h2 class="shead">Friendly to DATUM</h2>
+  <h2 class="shead">Works with the hardware you have</h2>
   <div class="prose">
-    <p>The model is <a href="https://github.com/CONVOYMining/datum_gateway">DATUM</a>'s, on purpose: the miner's node builds the block, the pool only coordinates the reward. datstr keeps the semantics and the terms, and speaks signed JSON north of the gateway instead of DATUM's encrypted session. Existing hardware works unchanged, because stratum v1 stays on the gateway's south side, and a DATUM gateway is one adapter away from a datstr coordinator. With thanks to DATUM and to <a href="https://github.com/iohzrd/ratum">ratum</a>.</p>
+    <p>Stratum v1 stays on the gateway's south side, so any miner that speaks it today, an ASIC or a tab, mines into a datstr coinbase unchanged. The gateway runs beside your own node and builds the block there; the coordinator speaks signed JSON and never sees a template. Existing gateway software that already builds templates at the miner's node is one adapter away from a datstr coordinator.</p>
   </div>
 
   <h2 class="shead">What it stands on</h2>
@@ -148,10 +148,8 @@
     <a href="https://bitcoin-kernel.com/">bitcoin-kernel</a>
     <a href="https://jss.live/">JSS</a>
     <a href="https://did-nostr.com/">did:nostr</a>
-    <a href="https://github.com/CONVOYMining/datum_gateway">DATUM</a>
-    <a href="https://github.com/iohzrd/ratum">ratum</a>
   </div>
-  <p class="fnote">datstr = DATUM + Nostr = Decentralized Alternative Templates and Shares Transmitted by Relays. Draft 0.0.1, 13 September 2026. This page makes no external calls.</p>
+  <p class="fnote">datstr: Decentralized Alternative Templates and Shares Transmitted by Relays. Draft 0.0.1, 13 September 2026. This page makes no external calls.</p>
 </div></footer>
 </body>
 </html>

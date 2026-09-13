@@ -28,7 +28,7 @@
   <text x="884" y="194" font-family="DejaVu Sans Mono, monospace" font-size="13" font-weight="700" fill="#6d28d9" letter-spacing="2.5">THE SHARE</text>
   <line x1="884" y1="210" x2="1108" y2="210" stroke="#eef0f2" stroke-width="1.5"/>
   <g font-size="19" fill="#16181d">
-    <text x="912" y="248">Your own template</text><text x="912" y="288">Signed by your key</text><text x="912" y="328">Checked by the kernel</text><text x="912" y="368">Paid in the coinbase</text><text x="912" y="408">Audited in a tab</text><text x="912" y="448">Friendly to DATUM</text>
+    <text x="912" y="248">Your own template</text><text x="912" y="288">Signed by your key</text><text x="912" y="328">Checked by the kernel</text><text x="912" y="368">Paid in the coinbase</text><text x="912" y="408">Audited in a tab</text><text x="912" y="448">Any stratum miner</text>
   </g>
   <g font-family="DejaVu Sans Mono, monospace" font-size="22" font-weight="700" fill="#1a7f37">
     <text x="884" y="248">✓</text><text x="884" y="288">✓</text><text x="884" y="328">✓</text><text x="884" y="368">✓</text><text x="884" y="408">✓</text><text x="884" y="448">✓</text>
