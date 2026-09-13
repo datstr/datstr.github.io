@@ -3,24 +3,140 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>datstr</title>
-<meta name="description" content="A decentralized mining share network for Bitcoin and its BLAKE2b fork.">
+<title>datstr - pools should pool rewards, not blocks</title>
+<meta name="description" content="A decentralized mining share network for Bitcoin and its BLAKE2b fork. Your node builds the block, a Nostr-signed share proves the work, and the coinbase pays you directly. No custody, no mandatory fee, verified in your browser.">
+<link rel="canonical" href="https://datstr.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%236d28d9'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23fff'/%3E%3C/svg%3E">
+<meta property="og:site_name" content="datstr">
+<meta property="og:title" content="datstr">
+<meta property="og:description" content="Pools should pool rewards, not blocks. A decentralized mining share network: your node builds the block, a signed share proves the work, the coinbase pays you directly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://datstr.com/">
+<meta property="og:image" content="https://datstr.com/og.png?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="datstr: pools should pool rewards, not blocks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="datstr">
+<meta name="twitter:description" content="Pools should pool rewards, not blocks. A decentralized mining share network for Bitcoin and its BLAKE2b fork.">
+<meta name="twitter:image" content="https://datstr.com/og.png?v=1">
 <style>
-  :root { color-scheme: light dark; }
-  body { max-width: 40rem; margin: 4rem auto; padding: 0 1rem; font: 17px/1.6 system-ui, sans-serif; }
-  h1 { font-size: 2.2rem; margin-bottom: 0.2rem; }
-  p.tag { margin-top: 0; opacity: 0.75; }
-  ul { padding-left: 1.2rem; }
+  :root{--bg:#fff;--fg:#16181d;--mut:#5b6470;--bd:#e6e8eb;--pan:#fafbfc;--ac:#6d28d9;--ac2:#0969da;--good:#1a7f37;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--ac2);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{max-width:940px;margin:0 auto;padding:0 1.5rem}
+  nav{border-bottom:1px solid var(--bd)}
+  nav .wrap{display:flex;align-items:center;gap:1.3rem;height:56px}
+  nav .brand{font-weight:700;letter-spacing:-.3px;margin-right:auto;color:var(--fg);font-size:1rem}nav .brand b{color:var(--ac)}
+  nav a{color:var(--mut);font-size:.9rem;font-weight:500}nav a.on{color:var(--fg)}
+  .note{margin:1.1rem 0 0;padding:.7rem 1rem;background:var(--pan);border:1px solid var(--bd);border-radius:10px;font-size:.9rem;color:var(--mut);line-height:1.55}
+  .note b{color:var(--fg)}
+  header.hero{padding:3.2rem 0 1.2rem;text-align:center}
+  h1{font-size:2.7rem;line-height:1.05;letter-spacing:-1.2px;margin:0;font-weight:800}
+  h1 em{font-style:italic;color:var(--ac)}
+  .sub{font-size:1.14rem;color:#37414d;margin:1rem auto 0;max-width:40rem;line-height:1.5}
+  .cta{display:flex;gap:.8rem;justify-content:center;margin:1.6rem 0 0;flex-wrap:wrap}
+  .btn{display:inline-block;padding:.65rem 1.2rem;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--bd);color:var(--fg);background:#fff}
+  .btn.p{background:var(--ac);border-color:var(--ac);color:#fff}.btn:hover{text-decoration:none;border-color:var(--ac)}
+  .shead{text-align:center;font-size:1.9rem;font-weight:800;letter-spacing:-.6px;margin:3.2rem 0 0}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1.6rem}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.6rem}
+  .grid3 h3,.grid4 h3{margin:0 0 .35rem;font-size:1.05rem;letter-spacing:-.2px}
+  .grid3 p,.grid4 p{margin:0;color:var(--mut);font-size:.92rem;line-height:1.55}
+  .grid4 > div{border:1px solid var(--bd);border-radius:12px;padding:1rem 1.1rem;background:var(--pan)}
+  .grid4 .k{font:700 .72rem var(--mono);letter-spacing:2px;color:var(--ac);text-transform:uppercase;margin-bottom:.4rem}
+  .flow{margin:1.6rem auto 0;padding:1.2rem 1.4rem;border:1px solid var(--bd);border-radius:16px;box-shadow:0 8px 30px rgba(16,18,29,.06);font:.9rem/1.7 var(--mono);color:var(--fg);overflow-x:auto;white-space:pre}
+  .flow b{color:var(--ac)}.flow i{color:var(--mut);font-style:normal}
+  table{border-collapse:collapse;width:100%;margin-top:1.4rem;font-size:.92rem}
+  th,td{border-top:1px solid var(--bd);padding:.55rem .7rem;text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:1px}
+  td code{font:.86rem var(--mono)}
+  .prose{max-width:44rem;margin:1.2rem auto 0;color:#37414d;line-height:1.6}
+  .prose p{margin:.8rem 0}
+  ul.pr{max-width:44rem;margin:1.2rem auto 0;padding-left:1.2rem;color:#37414d}ul.pr li{margin:.4rem 0}
+  @media(max-width:760px){.grid4{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.grid3{grid-template-columns:1fr;gap:1.1rem}.grid4{grid-template-columns:1fr}h1{font-size:2.1rem}}
+  footer{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--bd);color:var(--mut);font-size:.85rem}
+  footer .links{display:flex;gap:1.4rem;flex-wrap:wrap;margin-bottom:.9rem}
+  .fnote{font:.8rem/1.6 var(--mono);color:var(--mut);max-width:54rem}
 </style>
 </head>
 <body>
-<h1>datstr</h1>
-<p class="tag">A decentralized mining share network for Bitcoin and its BLAKE2b fork.</p>
-<p>Miners build their own block templates, prove their work with Nostr-signed shares, and are paid directly in the coinbase. No custody, no mandatory fee, and every rule a verifier applies runs in a browser.</p>
-<p>DATUM semantics, signed JSON wire, Solid documents, Nostr identity. Mining in the browser: a coordinator is a page with a socket, and a miner can be a tab.</p>
-<ul>
-  <li><a href="/spec/">The spec</a>, draft version 0.0.1</li>
-  <li><a href="https://github.com/datstr">Source</a></li>
-</ul>
+<nav><div class="wrap">
+  <a href="/" class="brand">dat<b>·</b>str</a>
+  <a href="/" class="on">Overview</a>
+  <a href="/spec/">Spec</a>
+  <a href="https://github.com/datstr">GitHub</a>
+</div></nav>
+
+<div class="wrap"><p class="note"><b>Status:</b> a protocol draft, version 0.0.1. Nothing mines yet. The <a href="/spec/">spec</a> is the deliverable; the gateway, the coordinator and the audit page come next, on BLAKE2b testnet4 first.</p></div>
+
+<header class="hero"><div class="wrap">
+  <h1>Pools should pool rewards,<br>not <em>blocks</em>.</h1>
+  <p class="sub">datstr is a decentralized mining share network for Bitcoin and its BLAKE2b fork. Your node builds the block, a Nostr-signed share proves the work, and the coinbase pays you directly. No custody, no mandatory fee, and every rule a verifier applies runs in your browser.</p>
+  <div class="cta"><a class="btn p" href="/spec/">Read the spec</a><a class="btn" href="https://github.com/datstr/spec">Source</a></div>
+</div></header>
+
+<div class="wrap">
+  <div class="flow"><i>ASIC or CPU</i>  ──stratum v1──▶  <b>gateway</b> beside <i>your node</i>  ──signed share──▶  <b>coordinator</b>  ──split──▶  <i>your coinbase</i>
+                                     ▲                                    │
+                                     └──── getblocktemplate ──────────────┴──── ledger, blocks, splits: <b>documents anyone can replay</b></div>
+
+  <h2 class="shead">How it works</h2>
+  <div class="grid3">
+    <div><h3>Your template</h3><p>The gateway runs beside your own node and builds every block from its <code>getblocktemplate</code>. Nothing north of the gateway ever sends a template, a transaction list or a merkle branch south. Your node's policy is your policy.</p></div>
+    <div><h3>Your receipt</h3><p>A share is the header, the coinbase and the merkle branches, signed by a worker key your <a href="https://did-nostr.com/">did:nostr</a> master delegated. The coordinator's signed ack makes it a receipt. What was acked and not paid is provable.</p></div>
+    <div><h3>Your payout</h3><p>The coordinator only dictates coinbase outputs, like DATUM's coinbaser, from a deterministic difficulty-summed window. Every block pays the window directly. Nobody ever holds the reward.</p></div>
+  </div>
+
+  <h2 class="shead">Four layers</h2>
+  <div class="grid4">
+    <div><div class="k">1 · Bitcoin</div><h3>Validity, settlement</h3><p>btc and xbt and their testnet4s. A block is valid when your node accepts it, policy included.</p></div>
+    <div><div class="k">2 · Share network</div><h3>Accounting</h3><p>Proof-of-work shares, a window, a split. Two verifiers with the same shares produce the same outputs, byte for byte.</p></div>
+    <div><div class="k">3 · Nostr</div><h3>Identity, discovery</h3><p>did:nostr masters, delegated workers, signed documents. Relays carry them and are never the source of truth.</p></div>
+    <div><div class="k">4 · Market</div><h3>Optional, later</h3><p>Variance transfer and claim trading are reserved names in the spec, not part of the protocol.</p></div>
+  </div>
+
+  <h2 class="shead">In your browser</h2>
+  <div class="prose">
+    <p>Every check a datstr verifier makes is a <a href="https://bitcoin-kernel.com/">bitcoin-kernel</a> rule, and the kernel runs in a tab. So an auditor fetches the coordinator's documents, replays the shares, and checks the coinbase of every block against the ledger without trusting anyone. The same kernel can mine: a page with a WebSocket is a miner, and a coordinator is a <a href="https://jss.live/">JSS</a> plugin, a page with a socket.</p>
+  </div>
+
+  <h2 class="shead">Chains</h2>
+  <table>
+    <tr><th>alias</th><th>chain</th><th>header</th><th>proof of work</th></tr>
+    <tr><td><code>btc</code></td><td>Bitcoin mainnet</td><td>80 bytes</td><td>SHA256d</td></tr>
+    <tr><td><code>tbtc4</code></td><td>Bitcoin testnet4</td><td>80 bytes</td><td>SHA256d</td></tr>
+    <tr><td><code>xbt</code></td><td>Knots BLAKE2b mainnet</td><td>164 bytes</td><td>tagged SHA-256 tree, BLAKE2b-256, XOR mask</td></tr>
+    <tr><td><code>xbt4</code></td><td>Knots BLAKE2b testnet4</td><td>164 bytes</td><td>as above</td></tr>
+  </table>
+
+  <h2 class="shead">Friendly to DATUM</h2>
+  <div class="prose">
+    <p>The model is <a href="https://github.com/CONVOYMining/datum_gateway">DATUM</a>'s, on purpose: the miner's node builds the block, the pool only coordinates the reward. datstr keeps the semantics and the terms, and speaks signed JSON north of the gateway instead of DATUM's encrypted session. Existing hardware works unchanged, because stratum v1 stays on the gateway's south side, and a DATUM gateway is one adapter away from a datstr coordinator. With thanks to DATUM and to <a href="https://github.com/iohzrd/ratum">ratum</a>.</p>
+  </div>
+
+  <h2 class="shead">What it stands on</h2>
+  <ul class="pr">
+    <li>Standardness is the default, not a filter the network imposes. Knots policy on the BLAKE2b chains, aimed at a monetary Bitcoin.</li>
+    <li>Fork-choice policy is out of scope. A verifier never refuses a share for what its parent contained.</li>
+    <li>Infrastructure is disposable. If every coordinator disappears, a gateway falls back to solo work and keeps its receipts.</li>
+    <li>If the coordinator cannot run on an old Android phone, the protocol is over-engineered.</li>
+  </ul>
+</div>
+
+<footer><div class="wrap">
+  <div class="links">
+    <a href="/spec/">The spec</a>
+    <a href="https://github.com/datstr/spec">Spec source</a>
+    <a href="https://github.com/datstr/datstr.github.io">This page's source</a>
+    <a href="https://bitcoin-kernel.com/">bitcoin-kernel</a>
+    <a href="https://jss.live/">JSS</a>
+    <a href="https://did-nostr.com/">did:nostr</a>
+    <a href="https://github.com/CONVOYMining/datum_gateway">DATUM</a>
+    <a href="https://github.com/iohzrd/ratum">ratum</a>
+  </div>
+  <p class="fnote">datstr = DATUM + Nostr. Draft 0.0.1, 13 September 2026. This page makes no external calls.</p>
+</div></footer>
 </body>
 </html>
