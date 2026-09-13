@@ -46,7 +46,7 @@
   .grid3 p,.grid4 p{margin:0;color:var(--mut);font-size:.92rem;line-height:1.55}
   .grid4 > div{border:1px solid var(--bd);border-radius:12px;padding:1rem 1.1rem;background:var(--pan)}
   .grid4 .k{font:700 .72rem var(--mono);letter-spacing:2px;color:var(--ac);text-transform:uppercase;margin-bottom:.4rem}
-  .flow{margin:1.6rem auto 0;padding:1.2rem 1.4rem;border:1px solid var(--bd);border-radius:16px;box-shadow:0 8px 30px rgba(16,18,29,.06);font:.9rem/1.7 var(--mono);color:var(--fg);overflow-x:auto;white-space:pre}
+  .flow{margin:1.6rem auto 0;padding:1.2rem 1.4rem;font-size:.86rem;border:1px solid var(--bd);border-radius:16px;box-shadow:0 8px 30px rgba(16,18,29,.06);font:.9rem/1.7 var(--mono);color:var(--fg);overflow-x:auto;white-space:pre}
   .flow b{color:var(--ac)}.flow i{color:var(--mut);font-style:normal}
   table{border-collapse:collapse;width:100%;margin-top:1.4rem;font-size:.92rem}
   th,td{border-top:1px solid var(--bd);padding:.55rem .7rem;text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:1px}
@@ -78,9 +78,9 @@
 </div></header>
 
 <div class="wrap">
-  <div class="flow"><i>ASIC or CPU</i>  ──stratum v1──▶  <b>gateway</b> beside <i>your node</i>  ──signed share──▶  <b>coordinator</b>  ──split──▶  <i>your coinbase</i>
-                                     ▲                                    │
-                                     └──── getblocktemplate ──────────────┴──── ledger, blocks, splits: <b>documents anyone can replay</b></div>
+  <div class="flow"><i>ASIC or CPU</i> ──stratum v1──▶ <b>gateway</b> ──signed share──▶ <b>coordinator</b> ──split──▶ <i>your coinbase</i>
+                            ▲ getblocktemplate                 │
+                            └── <i>your node</i>                    └── <i>documents anyone can replay</i></div>
 
   <h2 class="shead">How it works</h2>
   <div class="grid3">
