@@ -51,11 +51,9 @@
   .box{display:inline-block;padding:.5rem .9rem;border:1px solid var(--bd);border-radius:10px;background:var(--pan);font:600 .95rem var(--mono);white-space:nowrap}
   .box.hi{background:var(--ac);border-color:var(--ac);color:#fff}
   .cap{margin:.5rem auto 0;max-width:13rem;font-size:.78rem;line-height:1.4;color:var(--mut)}.cap code{font:.76rem var(--mono)}
-  .arr{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;padding-top:.55rem;color:var(--mut);font:600 .72rem var(--mono);letter-spacing:.5px}
-  .arr::after{content:"";width:2.6rem;height:2px;background:var(--bd);position:relative;margin-top:.15rem}
-  .arr::before{content:"▶";position:relative;top:1.15rem;left:1.35rem;font-size:.55rem;color:var(--mut)}
-  .arr span{order:-1}
-  @media(max-width:640px){.flow{flex-direction:column;align-items:center;gap:.6rem}.arr{flex-direction:row;padding:0;gap:.4rem}.arr::after{width:2px;height:1.6rem;margin:0}.arr::before{content:"▼";top:.7rem;left:.55rem}.arr span{order:0}.cap{max-width:18rem}}
+  .arr{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:.25rem;padding-top:.6rem;color:var(--mut);font:600 .72rem var(--mono);letter-spacing:.5px}
+  .arr .ah{color:#b8bec7;display:block}
+  @media(max-width:640px){.flow{flex-direction:column;align-items:center;gap:.5rem}.arr{flex-direction:row;padding:0;gap:.5rem}.arr .ah{transform:rotate(90deg);width:34px}.cap{max-width:18rem}}
   table{border-collapse:collapse;width:100%;margin-top:1.4rem;font-size:.92rem}
   th,td{border-top:1px solid var(--bd);padding:.55rem .7rem;text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:1px}
   td code{font:.86rem var(--mono)}
@@ -88,11 +86,11 @@
 <div class="wrap">
   <div class="flow">
     <div class="step"><div class="box">ASIC or CPU</div><div class="cap">any stratum v1 miner, unchanged</div></div>
-    <div class="arr"><span>stratum v1</span></div>
+    <div class="arr"><span>stratum v1</span><svg class="ah" viewBox="0 0 44 10" width="44" height="10" aria-hidden="true"><line x1="0" y1="5" x2="36" y2="5" stroke="currentColor" stroke-width="2"/><path d="M34 0 L44 5 L34 10 Z" fill="currentColor"/></svg></div>
     <div class="step"><div class="box hi">gateway</div><div class="cap">beside your node, builds jobs from its <code>getblocktemplate</code></div></div>
-    <div class="arr"><span>signed share</span></div>
+    <div class="arr"><span>signed share</span><svg class="ah" viewBox="0 0 44 10" width="44" height="10" aria-hidden="true"><line x1="0" y1="5" x2="36" y2="5" stroke="currentColor" stroke-width="2"/><path d="M34 0 L44 5 L34 10 Z" fill="currentColor"/></svg></div>
     <div class="step"><div class="box hi">coordinator</div><div class="cap">verifies with the kernel, publishes ledger, blocks and splits as documents anyone can replay</div></div>
-    <div class="arr"><span>split</span></div>
+    <div class="arr"><span>split</span><svg class="ah" viewBox="0 0 44 10" width="44" height="10" aria-hidden="true"><line x1="0" y1="5" x2="36" y2="5" stroke="currentColor" stroke-width="2"/><path d="M34 0 L44 5 L34 10 Z" fill="currentColor"/></svg></div>
     <div class="step"><div class="box">your coinbase</div><div class="cap">every block pays the window directly</div></div>
   </div>
 
