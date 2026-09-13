@@ -4,22 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>datstr - pools should pool rewards, not blocks</title>
-<meta name="description" content="Decentralized Alternative Templates, Shares Transmitted by Relays. A mining share network for Bitcoin and its BLAKE2b fork. Your node builds the block, a Nostr-signed share proves the work, and the coinbase pays you directly. No custody, no mandatory fee, verified in your browser.">
+<meta name="description" content="Decentralized Alternative Templates and Shares Transmitted by Relays. A mining share network for Bitcoin and its BLAKE2b fork. Your node builds the block, a Nostr-signed share proves the work, and the coinbase pays you directly. No custody, no mandatory fee, verified in your browser.">
 <link rel="canonical" href="https://datstr.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%236d28d9'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23fff'/%3E%3C/svg%3E">
 <meta property="og:site_name" content="datstr">
 <meta property="og:title" content="datstr">
-<meta property="og:description" content="Pools should pool rewards, not blocks. Decentralized Alternative Templates, Shares Transmitted by Relays: your node builds the block, a signed share proves the work, the coinbase pays you directly.">
+<meta property="og:description" content="Pools should pool rewards, not blocks. Decentralized Alternative Templates and Shares Transmitted by Relays: your node builds the block, a signed share proves the work, the coinbase pays you directly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://datstr.com/">
-<meta property="og:image" content="https://datstr.com/og.png?v=1">
+<meta property="og:image" content="https://datstr.com/og.png?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="datstr: pools should pool rewards, not blocks">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="datstr">
 <meta name="twitter:description" content="Pools should pool rewards, not blocks. A decentralized mining share network for Bitcoin and its BLAKE2b fork.">
-<meta name="twitter:image" content="https://datstr.com/og.png?v=1">
+<meta name="twitter:image" content="https://datstr.com/og.png?v=3">
 <style>
   :root{--bg:#fff;--fg:#16181d;--mut:#5b6470;--bd:#e6e8eb;--pan:#fafbfc;--ac:#6d28d9;--ac2:#0969da;--good:#1a7f37;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -35,6 +35,9 @@
   header.hero{padding:3.2rem 0 1.2rem;text-align:center}
   h1{font-size:2.7rem;line-height:1.05;letter-spacing:-1.2px;margin:0;font-weight:800}
   h1 em{font-style:italic;color:var(--ac)}
+  .name{margin:0 0 1rem;color:var(--ac);font:600 .95rem/1.4 var(--mono);letter-spacing:2.5px;text-transform:uppercase}
+  .name b{font-size:1.35em;font-weight:800;letter-spacing:0}
+  @media(max-width:640px){.name{font-size:.72rem;letter-spacing:1.5px}}
   .sub{font-size:1.14rem;color:#37414d;margin:1rem auto 0;max-width:40rem;line-height:1.5}
   .cta{display:flex;gap:.8rem;justify-content:center;margin:1.6rem 0 0;flex-wrap:wrap}
   .btn{display:inline-block;padding:.65rem 1.2rem;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--bd);color:var(--fg);background:#fff}
@@ -75,11 +78,12 @@
   <a href="https://github.com/datstr">GitHub</a>
 </div></nav>
 
-<div class="wrap"><p class="note"><b>Status:</b> a protocol draft, version 0.0.1. Nothing mines yet. The <a href="/spec/">spec</a> is the deliverable; the gateway, the coordinator and the audit page come next, on BLAKE2b testnet4 first.</p></div>
+<div class="wrap"><p class="note"><b>Status:</b> draft 0.0.1, running. A gateway, a coordinator and an audit page exist and are live on BLAKE2b testnet4, where the gateway has mined real blocks with the datstr coinbase. The <a href="/spec/">spec</a> is revised from that code. Next: the first pooled block, delegation, a browser miner.</p></div>
 
 <header class="hero"><div class="wrap">
+  <p class="name"><b>D</b>ecentralized <b>A</b>lternative <b>T</b>emplates, <b>S</b>hares <b>T</b>ransmitted by <b>R</b>elays</p>
   <h1>Pools should pool rewards,<br>not <em>blocks</em>.</h1>
-  <p class="sub">datstr, <b>D</b>ecentralized <b>A</b>lternative <b>T</b>emplates, <b>S</b>hares <b>T</b>ransmitted by <b>R</b>elays, is a mining share network for Bitcoin and its BLAKE2b fork. Your node builds the block, a Nostr-signed share proves the work, and the coinbase pays you directly. No custody, no mandatory fee, and every rule a verifier applies runs in your browser.</p>
+  <p class="sub">datstr is a mining share network for Bitcoin and its BLAKE2b fork. Your node builds the block, a Nostr-signed share proves the work, and the coinbase pays you directly. No custody, no mandatory fee, and every rule a verifier applies runs in your browser.</p>
   <div class="cta"><a class="btn p" href="/spec/">Read the spec</a><a class="btn" href="https://github.com/datstr/spec">Source</a></div>
 </div></header>
 
@@ -148,7 +152,7 @@
     <a href="https://github.com/CONVOYMining/datum_gateway">DATUM</a>
     <a href="https://github.com/iohzrd/ratum">ratum</a>
   </div>
-  <p class="fnote">datstr = DATUM + Nostr = Decentralized Alternative Templates, Shares Transmitted by Relays. Draft 0.0.1, 13 September 2026. This page makes no external calls.</p>
+  <p class="fnote">datstr = DATUM + Nostr = Decentralized Alternative Templates and Shares Transmitted by Relays. Draft 0.0.1, 13 September 2026. This page makes no external calls.</p>
 </div></footer>
 </body>
 </html>
