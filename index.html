@@ -30,8 +30,7 @@
   nav .wrap{display:flex;align-items:center;gap:1.3rem;height:56px}
   nav .brand{font-weight:700;letter-spacing:-.3px;margin-right:auto;color:var(--fg);font-size:1rem}nav .brand b{color:var(--ac)}
   nav a{color:var(--mut);font-size:.9rem;font-weight:500}nav a.on{color:var(--fg)}
-  .note{margin:1.1rem 0 0;padding:.7rem 1rem;background:var(--pan);border:1px solid var(--bd);border-radius:10px;font-size:.9rem;color:var(--mut);line-height:1.55}
-  .note b{color:var(--fg)}
+  .status{margin:1.6rem auto 0;max-width:40rem;font-size:.84rem;color:var(--mut);line-height:1.5}
   header.hero{padding:3.2rem 0 1.2rem;text-align:center}
   h1{font-size:2.7rem;line-height:1.05;letter-spacing:-1.2px;margin:0;font-weight:800}
   h1 em{font-style:italic;color:var(--ac)}
@@ -78,13 +77,13 @@
   <a href="https://github.com/datstr">GitHub</a>
 </div></nav>
 
-<div class="wrap"><p class="note"><b>Status:</b> draft 0.0.1, running. A gateway, a coordinator and an audit page exist and are live on BLAKE2b testnet4, where the gateway has mined real blocks with the datstr coinbase. The <a href="/spec/">spec</a> is revised from that code. Next: the first pooled block, delegation, a browser miner.</p></div>
 
 <header class="hero"><div class="wrap">
   <p class="name"><b>D</b>ecentralized <b>A</b>lternative <b>T</b>emplates and <b>S</b>hares <b>T</b>ransmitted by <b>R</b>elays</p>
   <h1>Pools should pool rewards,<br>not <em>blocks</em>.</h1>
   <p class="sub">datstr is a mining share network for Bitcoin and its BLAKE2b fork. Your node builds the block, a Nostr-signed share proves the work, and the coinbase pays you directly. No custody, no mandatory fee, and every rule a verifier applies runs in your browser.</p>
   <div class="cta"><a class="btn p" href="/spec/">Read the spec</a><a class="btn" href="https://github.com/datstr/spec">Source</a></div>
+  <p class="status">Draft 0.0.1, running on BLAKE2b testnet4: a gateway, a coordinator and an audit page, and real blocks with the datstr coinbase. Next: the first pooled block, delegation, a browser miner.</p>
 </div></header>
 
 <div class="wrap">
