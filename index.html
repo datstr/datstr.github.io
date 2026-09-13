@@ -46,8 +46,16 @@
   .grid3 p,.grid4 p{margin:0;color:var(--mut);font-size:.92rem;line-height:1.55}
   .grid4 > div{border:1px solid var(--bd);border-radius:12px;padding:1rem 1.1rem;background:var(--pan)}
   .grid4 .k{font:700 .72rem var(--mono);letter-spacing:2px;color:var(--ac);text-transform:uppercase;margin-bottom:.4rem}
-  .flow{margin:1.6rem auto 0;padding:1.2rem 1.4rem;font-size:.86rem;border:1px solid var(--bd);border-radius:16px;box-shadow:0 8px 30px rgba(16,18,29,.06);font:.9rem/1.7 var(--mono);color:var(--fg);overflow-x:auto;white-space:pre}
-  .flow b{color:var(--ac)}.flow i{color:var(--mut);font-style:normal}
+  .flow{margin:1.6rem auto 0;padding:1.4rem 1.2rem;border:1px solid var(--bd);border-radius:16px;box-shadow:0 8px 30px rgba(16,18,29,.06);display:flex;align-items:flex-start;justify-content:center;gap:.4rem}
+  .step{flex:1 1 0;min-width:0;text-align:center}
+  .box{display:inline-block;padding:.5rem .9rem;border:1px solid var(--bd);border-radius:10px;background:var(--pan);font:600 .95rem var(--mono);white-space:nowrap}
+  .box.hi{background:var(--ac);border-color:var(--ac);color:#fff}
+  .cap{margin:.5rem auto 0;max-width:13rem;font-size:.78rem;line-height:1.4;color:var(--mut)}.cap code{font:.76rem var(--mono)}
+  .arr{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;padding-top:.55rem;color:var(--mut);font:600 .72rem var(--mono);letter-spacing:.5px}
+  .arr::after{content:"";width:2.6rem;height:2px;background:var(--bd);position:relative;margin-top:.15rem}
+  .arr::before{content:"▶";position:relative;top:1.15rem;left:1.35rem;font-size:.55rem;color:var(--mut)}
+  .arr span{order:-1}
+  @media(max-width:640px){.flow{flex-direction:column;align-items:center;gap:.6rem}.arr{flex-direction:row;padding:0;gap:.4rem}.arr::after{width:2px;height:1.6rem;margin:0}.arr::before{content:"▼";top:.7rem;left:.55rem}.arr span{order:0}.cap{max-width:18rem}}
   table{border-collapse:collapse;width:100%;margin-top:1.4rem;font-size:.92rem}
   th,td{border-top:1px solid var(--bd);padding:.55rem .7rem;text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:1px}
   td code{font:.86rem var(--mono)}
@@ -78,9 +86,15 @@
 </div></header>
 
 <div class="wrap">
-  <div class="flow"><i>ASIC or CPU</i> ──stratum v1──▶ <b>gateway</b> ──signed share──▶ <b>coordinator</b> ──split──▶ <i>your coinbase</i>
-                            ▲ getblocktemplate                 │
-                            └── <i>your node</i>                    └── <i>documents anyone can replay</i></div>
+  <div class="flow">
+    <div class="step"><div class="box">ASIC or CPU</div><div class="cap">any stratum v1 miner, unchanged</div></div>
+    <div class="arr"><span>stratum v1</span></div>
+    <div class="step"><div class="box hi">gateway</div><div class="cap">beside your node, builds jobs from its <code>getblocktemplate</code></div></div>
+    <div class="arr"><span>signed share</span></div>
+    <div class="step"><div class="box hi">coordinator</div><div class="cap">verifies with the kernel, publishes ledger, blocks and splits as documents anyone can replay</div></div>
+    <div class="arr"><span>split</span></div>
+    <div class="step"><div class="box">your coinbase</div><div class="cap">every block pays the window directly</div></div>
+  </div>
 
   <h2 class="shead">How it works</h2>
   <div class="grid3">
