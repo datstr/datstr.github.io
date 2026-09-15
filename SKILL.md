@@ -38,9 +38,10 @@ and your shares earn a line in every block the pool wins.
 ## Run a coordinator
 
     node plugin/standalone.mjs --conf ~/.bitcoin/bitcoin.conf --network btc:testnet4-blake2b \
-      --key-file ~/.datstr/coordinator.key --data ~/.datstr/coordinator --port 3400
+      --data ~/.datstr/coordinator --port 3400
 
-Gateways connect to `ws://host:3400/ws`. Documents at `/pool.json`, `/shares.jsonl`,
+The coordinator's key lives at `<data>/coordinator.key`, made on first run (mode 0600); its
+pubkey is the pool's identity and is in `/pool.json`. Gateways connect to `ws://host:3400/ws`. Documents at `/pool.json`, `/shares.jsonl`,
 `/assignments.jsonl`, `/snapshots/<height>.json`, `/ledgers/`. The same core runs as a JSS plugin.
 `datstr/pool` (`node serve.mjs`) is the second implementation and needs no Knots node.
 
